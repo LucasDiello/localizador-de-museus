@@ -1,5 +1,10 @@
 package com.betrybe.museumfinder.model;
 
+/**
+ * A classe {@code Museum} representa informações sobre um museu.
+ * Inclui detalhes como identificação do museu, nome, descrição, endereço, tipo de coleção,
+ * assunto, URL, coordenadas e ID legado.
+ */
 public class Museum {
   private Long id;
   private String name;
