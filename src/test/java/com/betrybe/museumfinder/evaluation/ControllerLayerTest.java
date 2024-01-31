@@ -11,7 +11,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.betrybe.museumfinder.dto.MuseumDto;
 import com.betrybe.museumfinder.model.Museum;
 import com.betrybe.museumfinder.service.MuseumServiceInterface;
 import org.junit.jupiter.api.DisplayName;

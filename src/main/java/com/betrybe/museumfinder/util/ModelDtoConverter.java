@@ -36,7 +36,6 @@ public class ModelDtoConverter {
     museum.setDescription(dto.description());
     museum.setAddress(dto.address());
     museum.setCollectionType(dto.collectionType());
-    museum.setSubject(dto.subject());
     museum.setUrl(dto.url());
     museum.setCoordinate(dto.coordinate());
 
