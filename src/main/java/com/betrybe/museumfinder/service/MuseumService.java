@@ -30,7 +30,7 @@ public class MuseumService implements MuseumServiceInterface {
    */
   public void throwError(boolean validateCoordinate) {
     if (!validateCoordinate) {
-      throw new InvalidCoordinateException();
+      throw new InvalidCoordinateException("Coordenada inválida!");
     }
   }
 
@@ -40,7 +40,7 @@ public class MuseumService implements MuseumServiceInterface {
     throwError(coordinateValid);
     Optional<Museum> closestMuseum = fakedb.getClosestMuseum(coordinate, maxDistance);
     if (closestMuseum.isEmpty()) {
-      throw new MuseumNotFoundException();
+      throw new MuseumNotFoundException("Museu não encontrado!");
     }
     return closestMuseum.get();
   }
