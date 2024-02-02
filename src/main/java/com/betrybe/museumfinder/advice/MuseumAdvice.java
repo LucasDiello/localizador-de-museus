@@ -16,12 +16,12 @@ public class MuseumAdvice {
 
   @ExceptionHandler(InvalidCoordinateException.class)
   public ResponseEntity<String> handleCoordinateException(InvalidCoordinateException exception) {
-    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.getMessage());
+    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Coordenada inválida!");
   }
 
   @ExceptionHandler(MuseumNotFoundException.class)
   public ResponseEntity<String> handleMuseumNotFound(MuseumNotFoundException exception) {
-    return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
+    return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Museu não encontrado!");
   }
 
   @ExceptionHandler(Exception.class)
