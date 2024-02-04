@@ -1,28 +1,26 @@
 package com.betrybe.museumfinder.solution;
 
-import com.betrybe.museumfinder.database.MuseumFakeDatabase;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import com.betrybe.museumfinder.dto.CollectionTypeCount;
 import com.betrybe.museumfinder.service.CollectionTypeService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.web.client.RestTemplate;
 
 @SpringBootTest
-@AutoConfigureMockMvc
 public class CollectionTypeServiceTest {
 
   @Autowired
-  private MockMvc mockMvc;
-  @Autowired
-  RestTemplate restTemplate;
-  @MockBean
   private CollectionTypeService collectionTypeService;
 
   @Test
-  public void testcountByCollectionTypes (){
+  void testCountByCollectionTypes() {
+    CollectionTypeCount result = collectionTypeService.countByCollectionTypes("história");
 
+
+    assertEquals(387, result.count());
+    assertArrayEquals(new String[]{"história"}, result.collectionTypes());
   }
 }

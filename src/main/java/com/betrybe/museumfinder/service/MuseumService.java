@@ -28,7 +28,7 @@ public class MuseumService implements MuseumServiceInterface {
    *
    * @param validateCoordinate Se a validação da coordenada falhou.
    */
-  public void throwError(boolean validateCoordinate) {
+  public void verifyAndThrowError(boolean validateCoordinate) {
     if (!validateCoordinate) {
       throw new InvalidCoordinateException();
     }
@@ -37,7 +37,7 @@ public class MuseumService implements MuseumServiceInterface {
   @Override
   public Museum getClosestMuseum(Coordinate coordinate, Double maxDistance) {
     boolean coordinateValid = CoordinateUtil.isCoordinateValid(coordinate);
-    throwError(coordinateValid);
+    verifyAndThrowError(coordinateValid);
     Optional<Museum> closestMuseum = fakedb.getClosestMuseum(coordinate, maxDistance);
     if (closestMuseum.isEmpty()) {
       throw new MuseumNotFoundException();
@@ -48,7 +48,7 @@ public class MuseumService implements MuseumServiceInterface {
   @Override
   public Museum createMuseum(Museum museum) {
     boolean coordinateValid = CoordinateUtil.isCoordinateValid(museum.getCoordinate());
-    throwError(coordinateValid);
+    verifyAndThrowError(coordinateValid);
     return fakedb.saveMuseum(museum);
   }
 
