@@ -30,7 +30,7 @@ public class MuseumController {
   }
 
   @PostMapping
-  public ResponseEntity<Museum> newMuseum(@RequestBody MuseumCreationDto newMuseum) {
+  public ResponseEntity<Museum> createMuseum(@RequestBody MuseumCreationDto newMuseum) {
     Museum savedMuseum = museumService.createMuseum(ModelDtoConverter.dtoToModel(newMuseum));
     return ResponseEntity.status(HttpStatus.CREATED).body(savedMuseum);
   }
@@ -43,7 +43,7 @@ public class MuseumController {
    * @param maxDist   Distância máxima em quilômetros para a busca do museu mais próximo.
    */
   @GetMapping("/closest")
-  public ResponseEntity<Museum> searchClosestMuseums(
+  public ResponseEntity<Museum> getClosestMuseum(
       @RequestParam double lat,
       @RequestParam double lng,
       @RequestParam("max_dist_km") double maxDist) {
@@ -53,7 +53,7 @@ public class MuseumController {
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<Museum> searchIdMuseu(@PathVariable Long id) {
+  public ResponseEntity<Museum> getMuseum(@PathVariable Long id) {
     Museum findById = museumService.getMuseum(id);
     return ResponseEntity.ok(findById);
   }
